@@ -36,7 +36,7 @@ export const PasswordListing = ({
     if (!isMasterPassword) {
       onOpen("createMasterPassword");
     }
-  });
+  }, []);
 
   return (
     <Table>

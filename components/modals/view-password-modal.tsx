@@ -36,7 +36,7 @@ export const ViewPasswordModal = () => {
 
   const { password } = data;
   // @ts-ignore
-  const copiedPassword = password.password;
+  const copiedPassword = password?.password;
   const onCopy = () => {
     // @ts-ignore
     navigator.clipboard.writeText(copiedPassword);
