@@ -17,6 +17,7 @@ const DashboardPage = async () => {
   });
 
   if (passwords.length === 0) {
+    // @ts-ignore
     passwords = await db.password.create({
       data: {
         profileId: profile.id,
@@ -24,7 +25,7 @@ const DashboardPage = async () => {
         password: "Test Password",
       },
     });
-
+    // @ts-ignore
     passwords = [passwords];
   }
 

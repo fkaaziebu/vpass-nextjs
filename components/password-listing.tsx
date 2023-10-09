@@ -36,7 +36,7 @@ export const PasswordListing = ({
     if (!isMasterPassword) {
       onOpen("createMasterPassword");
     }
-  }, []);
+  });
 
   return (
     <Table>
@@ -54,8 +54,18 @@ export const PasswordListing = ({
             <TableCell>{password.description}</TableCell>
             <TableCell>{`${password.createdAt}`}</TableCell>
             <TableCell className="flex space-x-2">
-              <AddItemButton iconType="eye" type="viewPassword" password={password} isMasterPassword={isMasterPassword} />
-              <AddItemButton iconType="trash" type="deletePassword" password={password} isMasterPassword={isMasterPassword} />
+              <AddItemButton
+                iconType="eye"
+                type="viewPassword"
+                password={password}
+                isMasterPassword={isMasterPassword}
+              />
+              <AddItemButton
+                iconType="trash"
+                type="deletePassword"
+                password={password}
+                isMasterPassword={isMasterPassword}
+              />
             </TableCell>
           </TableRow>
         ))}
