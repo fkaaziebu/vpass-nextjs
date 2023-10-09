@@ -38,9 +38,10 @@ export const ViewPasswordModal = () => {
 
   const copiedPassword = password?.password;
   const onCopy = () => {
+    // @ts-ignore
     navigator.clipboard.writeText(copiedPassword);
     setCopied(true);
-    toast.success("Password copied!")
+    toast.success("Password copied!");
     setTimeout(() => {
       setCopied(false);
     }, 1000);
