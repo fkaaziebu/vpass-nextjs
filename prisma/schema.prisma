@@ -1,0 +1,47 @@
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Profile {
+    id       String @id @default(uuid())
+    userId   String @unique
+    name     String
+    imageUrl String @db.Text
+    email    String @db.Text
+
+    passwords Password[]
+    master Master[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Password {
+    id          String  @id @default(uuid())
+    description String
+    password    String
+    profileId   String
+    profile     Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([profileId])
+}
+
+model Master {
+    id        String   @id @default(uuid())
+    password  String
+
+    profileId String @unique
+    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+
+    @@index([profileId])
+}
