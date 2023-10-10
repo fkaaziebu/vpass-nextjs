@@ -14,7 +14,7 @@ export const checkMasterValidity = async () => {
       profileId: profile.id,
     },
   });
-
+  // @ts-ignore
   const masterPasswordDateCreated = new Date(masterPassword?.createdAt);
 
   const dateRightNow = new Date().getTime();
