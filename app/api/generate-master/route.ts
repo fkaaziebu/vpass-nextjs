@@ -1,5 +1,6 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { sendMail } from "@/lib/send-mail";
 import { generateString } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
@@ -41,6 +42,11 @@ export async function POST(req: Request) {
         },
       });
     }
+
+    const subject =
+      "This is your master password for accessing your passwords, please don't share";
+
+    await sendMail(subject, profile.email, master.password);
 
     return NextResponse.json(master);
   } catch (error) {
