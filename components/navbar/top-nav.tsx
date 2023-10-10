@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const TopNav = () => {
   return (
-    <div className="flex justify-between p-2 border-b-2 mb-5">
+    <div className="flex justify-between p-2 border-b-2 mb-5 sm:mx-4">
       <div>
         <Link href={"/"}>
           <Image
