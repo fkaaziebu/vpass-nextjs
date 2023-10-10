@@ -10,7 +10,8 @@ interface AddItemButtonProps {
     | "createMasterPassword"
     | "deletePassword"
     | "viewPassword"
-    | "clearMasterPassword";
+    | "clearMasterPassword"
+    | "verifyMasterPassword";
   description?: string;
   iconType?: "plus" | "eye" | "trash" | "pen" | "badge" | "eraser";
   password?: {
@@ -22,6 +23,7 @@ interface AddItemButtonProps {
     updatedAt: any;
   };
   isMasterPassword: boolean;
+  isMasterVerified: boolean;
 }
 
 export const AddItemButton = ({
@@ -30,12 +32,17 @@ export const AddItemButton = ({
   iconType,
   password,
   isMasterPassword,
+  isMasterVerified,
 }: AddItemButtonProps) => {
   const { onOpen } = useModal();
 
   const onClick = () => {
     if (!isMasterPassword && type !== "createPassword") {
       type = "createMasterPassword";
+    }
+
+    if (!isMasterVerified) {
+      type = "verifyMasterPassword";
     }
 
     onOpen(type, { password });

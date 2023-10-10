@@ -5,7 +5,8 @@ export type ModalType =
   | "createMasterPassword"
   | "deletePassword"
   | "viewPassword"
-  | "clearMasterPassword";
+  | "clearMasterPassword"
+  | "verifyMasterPassword";
 
 interface ModalStore {
   type: ModalType | null;

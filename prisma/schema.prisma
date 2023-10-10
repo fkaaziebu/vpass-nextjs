@@ -16,7 +16,7 @@ model Profile {
     email    String @db.Text
 
     passwords Password[]
-    master Master[]
+    master    Master[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -36,11 +36,12 @@ model Password {
 }
 
 model Master {
-    id        String   @id @default(uuid())
-    password  String
+    id         String  @id @default(uuid())
+    password   String
+    isVerified Boolean @default(false)
 
-    profileId String @unique
-    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    profileId String   @unique
+    profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
     createdAt DateTime @default(now())
 
     @@index([profileId])

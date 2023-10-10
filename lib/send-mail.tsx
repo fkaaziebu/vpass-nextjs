@@ -22,10 +22,6 @@ export const sendMail = async (
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-        toast.error("Email sending failed, try again later")
-    } else {
-        toast.success("Email sent successfully");
-    }
-  })
+    // Handle error and success cases here
+  });
 };

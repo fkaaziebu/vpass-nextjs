@@ -4,10 +4,12 @@ import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
 import { PasswordListing } from "@/components/password-listing";
 import { checkMasterPassword } from "@/lib/check-master-password";
+import { checkMasterVerified } from "@/lib/check-master-verified";
 
 const DashboardPage = async () => {
   const profile = await getUserProfile();
   const isMasterPassword = await checkMasterPassword();
+  const isMasterVerified = await checkMasterVerified();
 
   let passwords = await db.password.findMany({
     where: {
@@ -31,10 +33,11 @@ const DashboardPage = async () => {
 
   return (
     <div className="md:container">
-      <Navbar isMasterPassword={isMasterPassword} />
+      <Navbar isMasterVerified={isMasterVerified} isMasterPassword={isMasterPassword} />
       <Separator />
       <PasswordListing
         passwords={passwords}
+        isMasterVerified={isMasterVerified}
         isMasterPassword={isMasterPassword}
       />
     </div>

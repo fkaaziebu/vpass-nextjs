@@ -6,7 +6,8 @@ import { CreatePasswordModal } from "@/components/modals/create-password-modal";
 import { CreateMasterPasswordModal } from "@/components/modals/create-master-password-modal";
 import { DeletePasswordModal } from "@/components/modals/delete-password-modal";
 import { ViewPasswordModal } from "@/components/modals/view-password-modal";
-import { ClearMasterPasswordModal } from "../modals/clear-master-password-modal";
+import { ClearMasterPasswordModal } from "@/components/modals/clear-master-password-modal";
+import { VerifyMasterPasswordModal } from "@/components/modals/verify-master-password-modal";
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -26,6 +27,7 @@ export const ModalProvider = () => {
       <DeletePasswordModal />
       <ViewPasswordModal />
       <ClearMasterPasswordModal />
+      <VerifyMasterPasswordModal />
     </>
   );
 };

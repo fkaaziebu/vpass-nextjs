@@ -23,11 +23,13 @@ interface PasswordListingProps {
     createdAt: any;
     updatedAt: any;
   }[];
+  isMasterVerified: boolean;
   isMasterPassword: boolean;
 }
 
 export const PasswordListing = ({
   passwords,
+  isMasterVerified,
   isMasterPassword,
 }: PasswordListingProps) => {
   const { onOpen } = useModal();
@@ -68,12 +70,14 @@ export const PasswordListing = ({
                   type="viewPassword"
                   password={password}
                   isMasterPassword={isMasterPassword}
+                  isMasterVerified={isMasterVerified}
                 />
                 <AddItemButton
                   iconType="trash"
                   type="deletePassword"
                   password={password}
                   isMasterPassword={isMasterPassword}
+                  isMasterVerified={isMasterVerified}
                 />
               </div>
             </TableCell>
