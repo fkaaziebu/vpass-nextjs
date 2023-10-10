@@ -59,7 +59,7 @@ export const AddItemButton = ({
         "group px-2 py-2 rounded-md flex items-center hover:bg-zinc-700/10 transition bg-zinc-700/20",
         description && "gap-x-2",
         iconType === "trash" && "bg-red-600 hover:bg-red-600/80",
-        iconType === "eye" && "bg-[#3498db] hover:bg-[#3498db]/80"
+        iconType === "eye" && "bg-[#F99417] hover:bg-[#F99417]/80"
       )}
       type="button"
     >

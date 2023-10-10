@@ -275,7 +275,7 @@ export const CreatePasswordModal = () => {
                 Generate Password
               </Button>
               <Button variant="default" disabled={isLoading}>
-                Create
+                Save
               </Button>
             </DialogFooter>
           </form>
