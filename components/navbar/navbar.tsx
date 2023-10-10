@@ -19,6 +19,7 @@ export const Navbar = ({ isMasterPassword, isMasterVerified }: NavbarProps) => {
             description="Clear Master"
             type="clearMasterPassword"
             isMasterPassword={isMasterPassword}
+            isMasterVerified={isMasterVerified}
           />
         )}
 
@@ -28,6 +29,7 @@ export const Navbar = ({ isMasterPassword, isMasterVerified }: NavbarProps) => {
             description="Generate Master"
             type="createMasterPassword"
             isMasterPassword={isMasterPassword}
+            isMasterVerified={isMasterVerified}
           />
         )}
 
@@ -37,6 +39,7 @@ export const Navbar = ({ isMasterPassword, isMasterVerified }: NavbarProps) => {
             description="Verify Master"
             type="verifyMasterPassword"
             isMasterPassword={isMasterPassword}
+            isMasterVerified={isMasterVerified}
           />
         )}
 
@@ -45,6 +48,7 @@ export const Navbar = ({ isMasterPassword, isMasterVerified }: NavbarProps) => {
           description="Add Password"
           type="createPassword"
           isMasterPassword={isMasterPassword}
+          isMasterVerified={isMasterVerified}
         />
       </div>
     </div>
