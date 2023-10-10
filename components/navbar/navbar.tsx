@@ -8,7 +8,7 @@ interface NavbarProps {
 export const Navbar = ({ isMasterPassword }: NavbarProps) => {
   return (
     <div className="flex justify-between w-full p-2">
-      <div>
+      <div className="hidden md:flex">
         <h1 className="text-3xl">Your Vault</h1>
       </div>
       <div className="flex space-x-4">

@@ -44,28 +44,38 @@ export const PasswordListing = ({
       <TableHeader>
         <TableRow>
           <TableHead>Description</TableHead>
-          <TableHead>Date created</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead>
+            <div className="hidden sm:flex">Date created</div>
+          </TableHead>
+          <TableHead>
+            <div className="flex justify-end sm:justify-center mr-2 sm:mr-0">
+              Actions
+            </div>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {passwords.map((password) => (
           <TableRow key={password.id}>
             <TableCell>{password.description}</TableCell>
-            <TableCell>{`${password.createdAt}`}</TableCell>
-            <TableCell className="flex space-x-2">
-              <AddItemButton
-                iconType="eye"
-                type="viewPassword"
-                password={password}
-                isMasterPassword={isMasterPassword}
-              />
-              <AddItemButton
-                iconType="trash"
-                type="deletePassword"
-                password={password}
-                isMasterPassword={isMasterPassword}
-              />
+            <TableCell>
+              <div className="hidden sm:flex">{`${password.createdAt}`}</div>
+            </TableCell>
+            <TableCell>
+              <div className="flex space-x-2 justify-end sm:justify-center mr-2 sm:mr-0">
+                <AddItemButton
+                  iconType="eye"
+                  type="viewPassword"
+                  password={password}
+                  isMasterPassword={isMasterPassword}
+                />
+                <AddItemButton
+                  iconType="trash"
+                  type="deletePassword"
+                  password={password}
+                  isMasterPassword={isMasterPassword}
+                />
+              </div>
             </TableCell>
           </TableRow>
         ))}
