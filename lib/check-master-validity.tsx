@@ -20,7 +20,7 @@ export const checkMasterValidity = async () => {
   const dateRightNow = new Date().getTime();
 
   const isExpired =
-    12 <= (dateRightNow - masterPasswordDateCreated.getTime()) / 3600000;
+    1 <= (dateRightNow - masterPasswordDateCreated.getTime()) / 3600000;
 
   if (isExpired) {
     await db.master.delete({
@@ -29,4 +29,6 @@ export const checkMasterValidity = async () => {
       },
     });
   }
+
+  return isExpired;
 };

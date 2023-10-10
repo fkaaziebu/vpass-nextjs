@@ -24,6 +24,7 @@ interface AddItemButtonProps {
   };
   isMasterPassword: boolean;
   isMasterVerified: boolean;
+  isMasterExpired: boolean;
 }
 
 export const AddItemButton = ({
@@ -33,6 +34,7 @@ export const AddItemButton = ({
   password,
   isMasterPassword,
   isMasterVerified,
+  isMasterExpired,
 }: AddItemButtonProps) => {
   const { onOpen } = useModal();
 
@@ -41,6 +43,10 @@ export const AddItemButton = ({
       type = "createMasterPassword";
     } else if (!isMasterVerified) {
       type = "verifyMasterPassword";
+    } 
+    
+    if (isMasterExpired) {
+      type = "createMasterPassword";
     }
 
     onOpen(type, { password });

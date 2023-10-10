@@ -8,11 +8,10 @@ import { checkMasterVerified } from "@/lib/check-master-verified";
 import { checkMasterValidity } from "@/lib/check-master-validity";
 
 const DashboardPage = async () => {
-  await checkMasterValidity();
+  const isMasterExpired = await checkMasterValidity();
   const profile = await getUserProfile();
   const isMasterPassword = await checkMasterPassword();
   const isMasterVerified = await checkMasterVerified();
-
 
   let passwords = await db.password.findMany({
     where: {
@@ -38,12 +37,14 @@ const DashboardPage = async () => {
       <Navbar
         isMasterVerified={isMasterVerified}
         isMasterPassword={isMasterPassword}
+        isMasterExpired={isMasterExpired}
       />
       <Separator />
       <PasswordListing
         passwords={passwords}
         isMasterVerified={isMasterVerified}
         isMasterPassword={isMasterPassword}
+        isMasterExpired={isMasterExpired}
       />
     </div>
   );

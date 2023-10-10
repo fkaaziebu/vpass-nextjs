@@ -13,6 +13,7 @@ import {
   TableRow,
 } from "./ui/table";
 import { AddItemButton } from "./navbar/add-item-button";
+import { useRouter } from "next/navigation";
 
 interface PasswordListingProps {
   passwords: {
@@ -25,20 +26,26 @@ interface PasswordListingProps {
   }[];
   isMasterVerified: boolean;
   isMasterPassword: boolean;
+  isMasterExpired: boolean;
 }
 
 export const PasswordListing = ({
   passwords,
   isMasterVerified,
   isMasterPassword,
+  isMasterExpired,
 }: PasswordListingProps) => {
   const { onOpen } = useModal();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isMasterPassword) {
       onOpen("createMasterPassword");
     }
-  }, []);
+    if (isMasterExpired) {
+      router.refresh();
+    }
+  }, [isMasterExpired, isMasterPassword]);
 
   return (
     <Table>
@@ -71,6 +78,7 @@ export const PasswordListing = ({
                   password={password}
                   isMasterPassword={isMasterPassword}
                   isMasterVerified={isMasterVerified}
+                  isMasterExpired={isMasterExpired}
                 />
                 <AddItemButton
                   iconType="trash"
@@ -78,6 +86,7 @@ export const PasswordListing = ({
                   password={password}
                   isMasterPassword={isMasterPassword}
                   isMasterVerified={isMasterVerified}
+                  isMasterExpired={isMasterExpired}
                 />
               </div>
             </TableCell>
