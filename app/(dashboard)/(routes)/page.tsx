@@ -5,17 +5,19 @@ import { db } from "@/lib/db";
 import { PasswordListing } from "@/components/password-listing";
 import { checkMasterPassword } from "@/lib/check-master-password";
 import { checkMasterVerified } from "@/lib/check-master-verified";
+import { checkMasterValidity } from "@/lib/check-master-validity";
 
 const DashboardPage = async () => {
+  await checkMasterValidity();
   const profile = await getUserProfile();
   const isMasterPassword = await checkMasterPassword();
   const isMasterVerified = await checkMasterVerified();
+
 
   let passwords = await db.password.findMany({
     where: {
       profileId: profile.id,
     },
-
   });
 
   if (passwords.length === 0) {
@@ -33,7 +35,10 @@ const DashboardPage = async () => {
 
   return (
     <div className="md:container">
-      <Navbar isMasterVerified={isMasterVerified} isMasterPassword={isMasterPassword} />
+      <Navbar
+        isMasterVerified={isMasterVerified}
+        isMasterPassword={isMasterPassword}
+      />
       <Separator />
       <PasswordListing
         passwords={passwords}

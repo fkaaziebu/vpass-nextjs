@@ -39,9 +39,7 @@ export const AddItemButton = ({
   const onClick = () => {
     if (!isMasterPassword && type !== "createPassword") {
       type = "createMasterPassword";
-    }
-
-    if (!isMasterVerified) {
+    } else if (!isMasterVerified) {
       type = "verifyMasterPassword";
     }
 
