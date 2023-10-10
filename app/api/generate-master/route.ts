@@ -14,8 +14,8 @@ export async function POST(req: Request) {
 
     const options = {
       numeric: true,
-      lowercase: false,
-      uppercase: false,
+      lowercase: true,
+      uppercase: true,
       symbols: false,
     };
 
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       master = await db.master.create({
         data: {
           profileId: profile.id,
-          password: generateString(5, options),
+          password: generateString(8, options),
         },
       });
     } else {
