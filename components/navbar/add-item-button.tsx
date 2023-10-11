@@ -45,7 +45,7 @@ export const AddItemButton = ({
       type = "verifyMasterPassword";
     } 
     
-    if (isMasterExpired) {
+    if (isMasterExpired && type !== "createPassword") {
       type = "createMasterPassword";
     }
 
